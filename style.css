@@ -1,0 +1,61 @@
+#splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #cfe9ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+/* Logo starts small + invisible */
+#logo {
+    width: 450px;       
+    opacity: 0;         /* invisible first */
+    transform: scale(0.2); /* very small first */
+    transition: 2s;   /* how smooth the animation is */
+}
+
+/* Logo becomes normal size + visible */
+#logo.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hiddenText {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.6s;
+}
+
+.showText {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.6s;
+}
+
+/* Wordmark size */
+#titleText {
+    width: 350px;
+    height: auto;
+}
+
+/* text appear */
+.showText {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.6s;
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem;
+}
+
+/* Main website (hidden using HTML hidden attribute) */
+#homepage {
+    padding: 30px;
+    font-family: Arial, sans-serif;
+}

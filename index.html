@@ -6,24 +6,32 @@
         <title>SilverIsle</title>
         <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
         <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/png" href="images/NC_logo.png">
+        <link rel="icon" type="image/png" href="images/IconLogo.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/0d44c5051b.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <!-- Splash screen (blue background) -->
         <div id="splash">
-            <img id="island" src="images/IconLogo.png" alt="logo" />
+            <section id="introText">
+                <p id="studioText" class="hiddenText">FlowState Studios</p>
+                <p id="presentsText" class="hiddenText">Presents to you</p>
+            </section>
+
+            <img id="logo" src="images/IconLogo.png" alt="logo"/>
+
+            <img id="titleText" class="hiddenText" src="images/WordMarkLogo.png" alt="textLogo"/>
         </div>
 
         <!-- Website appears -->
-        <div id="main">
+        <main id="homepage" hidden>
             <h1>Welcome to SilverIsle</h1>
-            <p>This is your homepage.</p>
-        </div>
+            <p>A place to learn digital skills, one step at a time.</p>
+        </main>
+
+
+        <script src="script.js"></script>
     </body>
 </html>
