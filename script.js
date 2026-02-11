@@ -7,13 +7,7 @@ const studioText = document.getElementById("studioText");
 const presentsText = document.getElementById("presentsText");
 const titleText = document.getElementById("titleText");
 
-// Optional: sharpen ONLY the loader lottie (won't crash if not found)
-const loaderLottie = document.querySelector("#loadingPage .loader");
-if (loaderLottie) {
-  loaderLottie.renderConfig = {
-    devicePixelRatio: Math.min(window.devicePixelRatio, 2)
-  };
-}
+const welcomeText = document.querySelector(".welcomeText");
 
 // 1) Logo appears
 setTimeout(() => {
@@ -38,14 +32,30 @@ setTimeout(() => {
 
 // 3) After splash ends → show loading page
 setTimeout(() => {
-  splash.style.display = "none";
+  // fade splash out
+  splash.style.opacity = "0";
+
+  // fade loading in
   loadingPage.style.opacity = "1";
   loadingPage.style.pointerEvents = "auto";
+
+  // after fade finishes, remove splash from view
+  setTimeout(() => {
+    splash.style.display = "none";
+  }, 800); // match CSS transition time (0.8s)
 }, 5200);
 
-// 4) Then show homepage
+// 4) After a few seconds → hide loader, show welcome
+setTimeout(() => {
+  document.querySelector(".loader").style.opacity = "0";
+  welcomeText.style.opacity = "1";
+  welcomeText.style.transform = "translateY(0)";
+}, 9000);
+
+
+// 5) Then show homepage
 setTimeout(() => {
   loadingPage.style.opacity = "0";
   loadingPage.style.pointerEvents = "none";
   homepage.hidden = false;
-}, 12000);
+}, 14000);
