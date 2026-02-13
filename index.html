@@ -32,15 +32,42 @@
             <div class="welcomeText">
                 <h1>Welcome to SilverIsle</h1>
             </div>
+            <div class="taglineText">
+                <h1>
+                    A place to learn digital skills, one step at a time.
+                </h1>
+            </div>
         </section>
 
-        <!-- Website appears -->
-        <main id="homepage" hidden>
-            <h1>Welcome to SilverIsle</h1>
-            <p>A place to learn digital skills, one step at a time.</p>
+        <!-- Website homepage appears -->
+        <main id="homepage">
+            <section id="bgAni">
+                <dotlottie-wc src="https://lottie.host/f3b41a6e-c756-4e69-992c-96dcf96687a4/TQPKPbnZbh.lottie" class="cloud2" autoplay loop></dotlottie-wc> 
+            </section>
+
+            <img id="titleText2" src="images/WordMarkLogo.png" alt="SilverIsle">
+
+            <div class="stage">
+                <!-- Islands -->
+                <img class="islandImg islandLeft" src="images/SafeHarbour.png" alt="Safe Harbour">
+                <img class="islandImg islandRight" src="images/BasicsBayIsland.png" alt="Basics Bay">
+
+                <!-- Cloud -->
+                <img class="cloudImg" src="images/cloud.png" alt="cloud">
+
+                <!-- 3D Mascot -->
+                <model-viewer
+                class="mascot3d"
+                src="3DAssets/mascotCat.glb"
+                autoplay
+                background-color="transparent"
+                >
+                </model-viewer>
+            </div>
         </main>
 
-        
+
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
         <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
         <script src="script.js"></script>
     </body>

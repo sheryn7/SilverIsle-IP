@@ -77,8 +77,6 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.8s ease;
-    opacity: 0;                    /* start hidden */
-    pointer-events: none;
 }
 
 /* Cloud background */
@@ -94,31 +92,169 @@
 
 /* Loader center */
 .loader {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     position: relative;
     z-index: 2;
 }
 
-.welcomeText {
-    position: absolute;
-    text-align: center;
-    color: #1c2b4a;
-    opacity: 0;                 /* hidden first */
-    transform: translateY(10px);
-    transition: 0.8s ease;
-    z-index: 3;                 /* above loader */
-    transform: translateY(20px) scale(0.95);
+.welcomeText,
+.taglineText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  text-align: center;
+  color: #1c2b4a;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  z-index: 3;
+}
+
+.welcomeText.show,
+.taglineText.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .welcomeText h1 {
-    font-size: 4rem;
-    font-weight: 500;
-    font-family: "Inter", sans-serif;
+  font-size: 4rem;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+
+.taglineText h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
 }
 
 /* Main website (hidden using HTML hidden attribute) */
 #homepage {
-    padding: 30px;
-    font-family: "Inter", sans-serif;
+    position: fixed;
+    inset: 0;
+    background: url("images/Background.png") center/cover no-repeat;
+    overflow: hidden;
+    padding: 0;
+    opacity: 0;              /* start hidden visually */
+    pointer-events: none;    /* prevent clicks until shown */
+    transition: opacity 0.8s ease;
+}
+
+/* When homepage is "active" */
+#homepage.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Cloud background */
+.cloud2 {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Homepage layout assets */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Base model-viewer styling */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;   /* center the whole group */
+  align-items: flex-end;      /* bottom align */
+  gap: 250px;                 /* spacing between islands */
+  padding-bottom: 40px;       /* lift them up a bit */
+  overflow: hidden;
+}
+
+/* Images */
+.islandImg {
+  display: block;
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.islandLeft {
+  position: relative;
+  bottom: 130px;  /* move up */
+  width: 380px;
+}
+
+.islandRight{
+  position: relative;
+  width: 450px;
+}
+
+.cloudImg{
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: 500px;
+  z-index: 2;
+  pointer-events: none;
+
+  transform: translate(-50%, -50%) scale(1.6);
+  transition: transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+
+#homepage.scene-in .cloudImg{
+  transform: translate(-50%, 10%) scale(1);
+}
+
+.mascot3d{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220px;
+  height: 320px;
+  z-index: 3;
+
+  transform: translate(-50%, -50%) scale(1.7);
+  transition: transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+
+#homepage.scene-in .mascot3d{
+  transform: translate(-50%, -35%) scale(1);
+}
+
+.mascot3d.spawn {
+  opacity: 1;
+  scale: 1;
+}
+
+
+/* Hide the default loading bar at the top of model-viewer */
+model-viewer::part(default-progress-bar) {
+  display: none;
+}
+
+#titleText2{
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  z-index: 10;
+
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#homepage.logo-in #titleText2{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
