@@ -9,7 +9,7 @@ const titleText = document.getElementById("titleText");
 
 const welcomeText = document.querySelector(".welcomeText");
 const taglineText = document.querySelector(".taglineText");
-
+const chestScreen = document.getElementById("chestScreen");
 
 // 1) Logo appears
 setTimeout(() => {
@@ -66,30 +66,28 @@ setTimeout(() => {
 
 // 7) Then show homepage
 setTimeout(() => {
-
-  // fade out loading
   loadingPage.style.opacity = "0";
   loadingPage.style.pointerEvents = "none";
 
-  // show homepage
   homepage.classList.add("show");
 
-  // --- SCENE ENTRANCE ANIMATION ---
-  // slight delay so fade starts first
   setTimeout(() => {
-  homepage.classList.add("scene-in");
-  console.log("scene-in added:", homepage.className);
-}, 200);
+    homepage.classList.add("scene-in");
+  }, 200);
 
-  // --- LOGO TEXT APPEARS AFTER CLOUD + MASCOT MOVE ---
   setTimeout(() => {
     homepage.classList.add("logo-in");
   }, 1600);
 
-}, 15000);
+  // phase-2
+  setTimeout(() => {
+    homepage.classList.add("phase-2");
+  }, 4200);
 
-// 3D Mascot spawn animation
-const mascot = document.querySelector(".mascot3d");
-mascot?.addEventListener("load", () => {
-  mascot.classList.add("spawn");
-});
+  // phase-3 (SHOW CHEST)
+  setTimeout(() => {
+    chestScreen.hidden = false;       // <-- IMPORTANT
+    homepage.classList.add("phase-3");
+  }, 7000);
+
+}, 15000);

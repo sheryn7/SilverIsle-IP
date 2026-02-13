@@ -41,29 +41,45 @@
 
         <!-- Website homepage appears -->
         <main id="homepage">
-            <section id="bgAni">
-                <dotlottie-wc src="https://lottie.host/f3b41a6e-c756-4e69-992c-96dcf96687a4/TQPKPbnZbh.lottie" class="cloud2" autoplay loop></dotlottie-wc> 
+                <section id="bgAni">
+                    <dotlottie-wc src="https://lottie.host/f3b41a6e-c756-4e69-992c-96dcf96687a4/TQPKPbnZbh.lottie" class="cloud2" autoplay loop></dotlottie-wc> 
+                </section>
+
+                <section id="islandScreen">
+                    <img id="titleText2" src="images/WordMarkLogo.png" alt="SilverIsle">
+
+                    <p id="infoText">
+                        Each island holds knowledge that helps you<br>
+                        navigate the digital world with confidence.
+                    </p>
+
+                    <div class="stage">
+                        <!-- Islands -->
+                        <img class="islandImg islandLeft" src="images/SafeHarbour.png" alt="Safe Harbour">
+                        <img class="islandImg islandRight" src="images/BasicsBayIsland.png" alt="Basics Bay">
+
+                        <!-- Cloud -->
+                        <img class="cloudImg" src="images/cloud.png" alt="cloud">
+
+                        <!-- 3D Mascot -->
+                        <model-viewer
+                        class="mascot3d"
+                        src="3DAssets/mascotCat.glb"
+                        autoplay
+                        background-color="transparent"
+                        >
+                        </model-viewer>
+                    </div>
+                </section>
+
+                <section id="chestScreen" hidden aria-label="Treasure chest screen">
+                <dotlottie-wc src="https://lottie.host/b9ec48f3-391e-432c-a689-9bc9ca03318f/bTq1Be2VL9.lottie" class="chest" style="width: 600px; height: 600px;" autoplay loop></dotlottie-wc>
+
+                <p class="chestText">
+                    Complete the islands to uncover<br>
+                    your final treasure!
+                </p>
             </section>
-
-            <img id="titleText2" src="images/WordMarkLogo.png" alt="SilverIsle">
-
-            <div class="stage">
-                <!-- Islands -->
-                <img class="islandImg islandLeft" src="images/SafeHarbour.png" alt="Safe Harbour">
-                <img class="islandImg islandRight" src="images/BasicsBayIsland.png" alt="Basics Bay">
-
-                <!-- Cloud -->
-                <img class="cloudImg" src="images/cloud.png" alt="cloud">
-
-                <!-- 3D Mascot -->
-                <model-viewer
-                class="mascot3d"
-                src="3DAssets/mascotCat.glb"
-                autoplay
-                background-color="transparent"
-                >
-                </model-viewer>
-            </div>
         </main>
 
 
