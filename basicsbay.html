@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SilverIsle</title>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="images/IconLogo.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="bb-body">
+
+        <!-- Screen A: Island intro -->
+        <section class="bb-screen bb-screen--island" id="bbIslandScreen">
+
+            <div class="bb-center">
+            <h1 class="bb-h1">Basics Bay</h1>
+            <p class="bb-sub">Digital basics</p>
+
+            <div class="bb-modelWrap">
+                <model-viewer
+                src="3DAssets/basicsbay_island.glb"
+                autoplay
+                camera-controls
+                disable-zoom
+                interaction-prompt="none"
+                environment-image="neutral"
+                shadow-intensity="0.7">
+                </model-viewer>
+            </div>
+            </div>
+        </section>
+
+        <!-- Screen B: Level 1 intro -->
+        <section class="bb-screen bb-screen--level is-hidden" id="bbLevelScreen">
+
+            <div class="bb-center">
+                <h2 class="bb-h2">Level 1<br><span class="bb-h2span">Clicking Buttons</span></h2>
+
+                <img class="bb-mascot" src="images/mascot.png" alt="Mascot">
+
+                <p class="bb-desc">Let's learn how to click<br>buttons on a screen!</p>
+            </div>
+        </section>
+
+        <!-- Screen C: Click Here interaction -->
+        <section class="bb-screen bb-screen--game is-hidden" id="bbClickScreen">
+            <button class="bb-clickBtn" id="bbClickBtn" type="button">Click Here</button>
+        </section>
+
+        <!-- Screen D: Correct -->
+        <section class="bb-screen bb-screen--result is-hidden" id="bbCorrectScreen">
+            <div class="bb-resultWrap">
+                <dotlottie-wc
+                src="https://lottie.host/ed359e53-1d32-4f00-a567-7aea87533a7e/lfBTIqCguu.lottie"
+                style="width: min(520px, 90vw); height: auto; max-height: 70vh; display:block;"
+                autoplay
+                loop
+                ></dotlottie-wc>
+                <p class="bb-resultText">Well Done!</p>
+            </div>
+        </section>
+
+        <!-- Screen C2: Click Here interaction (harder) -->
+        <section class="bb-screen bb-screen--game is-hidden" id="bbClickScreen2">
+            <button class="bb-clickBtn bb-clickBtn--small" id="bbClickBtn2" type="button">Click Here</button>
+        </section>
+
+        <!-- Screen E: Wrong -->
+        <section class="bb-screen bb-screen--result is-hidden" id="bbWrongScreen">
+            <div class="bb-resultWrap">
+                <dotlottie-wc
+                src="https://lottie.host/8da73d44-d59e-4456-9da6-8e62b36fca49/1wv1xUpDqd.lottie"
+                style="width: min(520px, 90vw); height: auto; max-height: 70vh; display:block;"
+                autoplay
+                loop
+                ></dotlottie-wc>
+                <p class="bb-resultText">Try Again!</p>
+            </div>
+        </section>
+
+        <!-- Screen F: Sign in -->
+        <section class="bb-screen bb-screen--signin is-hidden" id="bbSigninScreen">
+        <div class="bb-signinWrap">
+
+            <div class="bb-signinHeader">
+            <h2 class="bb-signinTitle">Save your progress?</h2>
+            <p class="bb-signinSub">
+                Create an account to save your<br>
+                progress and continue learning later.
+            </p>
+            </div>
+
+            <button class="bb-closeBtn" id="bbSigninClose" type="button" aria-label="Close">
+            ×
+            </button>
+
+            <div class="bb-cardSignin">
+            <h3 class="bb-cardTitle">Create an Account</h3>
+
+            <input class="bb-input" type="email" placeholder="Email" />
+            <input class="bb-input" type="password" placeholder="Password" />
+
+            <button class="bb-signinBtn" id="bbSignInBtn" type="button">Sign In</button>
+
+            <button class="bb-guestBtn" id="bbGuestBtn" type="button">Or Continue as Guest</button>
+            </div>
+
+        </div>
+        </section>
+
+        <!-- Recap 0: flash island image -->
+        <section class="bb-screen bb-recap is-hidden is-clear" id="bbRecap0">
+            <img class="bb-recapBg" src="images/BasicsBayIsland.png" alt="Basics Bay background">
+            <div class="bb-recapSoftOverlay"></div>
+        </section>
+
+        <!-- Recap 1: congrats msg, overlay ontop -->
+        <section class="bb-screen bb-recap is-hidden" id="bbRecap1">
+            <img class="bb-recapBg" src="images/BasicsBayIsland.png" alt="Basics Bay background">
+            <div class="bb-recapSoftOverlay"></div>
+
+        <div class="bb-recapText">
+            <p class="bb-recapBig">Congratulations on<br>completing</p>
+            <h2 class="bb-recapTitle">Basics Bay</h2>
+            <p class="bb-recapSmall">You're Tech Ready!</p>
+        </div>
+        </section>
+
+        <!-- Recap 2: things learnt -->
+        <section class="bb-screen bb-recap is-hidden" id="bbRecap2">
+        <img class="bb-recapBg" src="images/BasicsBayIsland.png" alt="Basics Bay background">
+        <div class="bb-recapSoftOverlay"></div>
+
+        <div class="bb-recapText">
+            <h2 class="bb-recapTitle">Basics Bay</h2>
+            <p class="bb-recapBig">You've learnt how to:</p>
+        </div>
+        </section>
+
+        <!-- Recap 3 -->
+        <section class="bb-screen bb-recap is-hidden" id="bbRecap3">
+        <img class="bb-recapBg" src="images/BasicsBayIsland.png" alt="Basics Bay background">
+        <div class="bb-recapSoftOverlay"></div>
+
+        <div class="bb-recapText">
+            <h2 class="bb-recapTitle">Basics Bay</h2>
+            <p class="bb-recapBig">You've learnt how to:</p>
+            <ul class="bb-checkList">
+            <li>Click buttons</li>
+            </ul>
+        </div>
+        </section>
+
+        <!-- Recap 4 -->
+        <section class="bb-screen bb-recap is-hidden" id="bbRecap4">
+        <img class="bb-recapBg" src="images/BasicsBayIsland.png" alt="Basics Bay background">
+        <div class="bb-recapSoftOverlay"></div>
+
+        <div class="bb-recapText">
+            <h2 class="bb-recapTitle">Basics Bay</h2>
+            <p class="bb-recapBig">You've learnt how to:</p>
+            <ul class="bb-checkList">
+            <li>Click buttons</li>
+            <li>Text using the keyboard</li>
+            </ul>
+        </div>
+        </section>
+
+        <!-- Recap 5 -->
+        <section class="bb-screen bb-recap is-hidden" id="bbRecap5">
+        <img class="bb-recapBg" src="images/BasicsBayIsland.png" alt="Basics Bay background">
+        <div class="bb-recapSoftOverlay"></div>
+
+        <div class="bb-recapText">
+            <h2 class="bb-recapTitle">Basics Bay</h2>
+            <p class="bb-recapBig">You've learnt how to:</p>
+            <ul class="bb-checkList">
+            <li>Click buttons</li>
+            <li>Text using the keyboard</li>
+            <li>Answer and end calls</li>
+            </ul>
+        </div>
+        </section>
+
+        <!-- Recap 6: next island -->
+        <section class="bb-screen bb-recap is-hidden" id="bbRecap6">
+        <img class="bb-recapBg" src="images/BasicsBayIsland.png" alt="Basics Bay background">
+        <div class="bb-recapSoftOverlay"></div>
+
+        <div class="bb-recapText">
+            <p class="bb-recapBig">
+            Now let's learn about internet safety to
+            safeguard your private information.
+            </p>
+        </div>
+        </section>
+
+        <section class="bb-screen is-hidden" id="bbRecapLoading">
+            <dotlottie-wc
+                src="https://lottie.host/f3b41a6e-c756-4e69-992c-96dcf96687a4/TQPKPbnZbh.lottie"
+                class="cloud"
+                autoplay
+                loop
+            ></dotlottie-wc>
+
+            <dotlottie-wc
+                src="https://lottie.host/ece1b0e5-8945-4a76-9b43-9aff89f2140f/sbUahg1zlE.lottie"
+                class="loader"
+                autoplay
+                loop
+            ></dotlottie-wc>
+        </section>
+
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/dist/dotlottie-web.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
