@@ -169,3 +169,6 @@ The photos in my images file under this folder is made by me using Maya and Adob
 
 <ins>Acknowledgements</ins>
 I received inspiration for the layout of this project from Google Interland and Duolingo.
+
+**Roles**
+Sheryn - Responsible for the execution of all project components
