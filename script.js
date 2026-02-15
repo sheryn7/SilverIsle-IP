@@ -176,6 +176,222 @@ if (bbIsland && bbLevel) {
 } else {
 }
 
+// --- SAFE HARBOUR page, runs only on safeharbour.html ---
+const shIsland = document.getElementById("shIslandScreen");
+const shLevel  = document.getElementById("shLevelScreen");
+
+// New flow screens
+const shPrompt = document.getElementById("shPromptScreen");
+const shAnswer = document.getElementById("shAnswerScreen");
+const shCorrect = document.getElementById("shCorrectScreen");
+const shWrong = document.getElementById("shWrongScreen");
+
+const shQTop = document.getElementById("shQTop");
+const shQText = document.getElementById("shQText");
+const shQTop2 = document.getElementById("shQTop2");
+const shQText2 = document.getElementById("shQText2");
+const shOptions = document.getElementById("shOptions");
+const shSkipBtn = document.getElementById("shSkipBtn");
+const shCorrectSub = document.getElementById("shCorrectSub");
+
+// Recap
+const shRecap0 = document.getElementById("shRecap0");
+const shRecap1 = document.getElementById("shRecap1");
+const shRecap2 = document.getElementById("shRecap2");
+const shRecap3 = document.getElementById("shRecap3");
+const shRecap4 = document.getElementById("shRecap4");
+const shRecap5 = document.getElementById("shRecap5");
+const shRecap6 = document.getElementById("shRecap6");
+const shRecap7 = document.getElementById("shRecap7");
+const shRecapLoading = document.getElementById("shRecapLoading");
+
+if (shIsland && shLevel && shPrompt && shAnswer) {
+  let shCurrent = null;
+  let qIndex = 0;
+  let promptTimer = null;
+
+  const questions = [
+    {
+      top: "Question 1 / 5",
+      text:
+        "You use the same password for email, social media and other websites.\nWhat could happen if one website got hacked?",
+      options: [
+        "Hackers can access my other accounts",      // correct (option 1)
+        "It makes logging in faster",
+        "Websites may charge extra fees",
+        "My internet will become slower",
+      ],
+      correctIndex: 0,
+      correctFeedback:
+        "If one account is hacked, the same password can be used to access your other accounts",
+    },
+    {
+      top: "Question 2 / 5",
+      text:
+        "You receive an email with a hilarious subject line that is obviously a scam.",
+      options: [
+        "Reply and ask if it’s real",
+        "Report it as spam",                         // correct (option 2)
+        "Forward it to friends",
+        "Click the link to check",
+      ],
+      correctIndex: 1,
+      correctFeedback:
+        "Do report spam emails to create a safer community for everyone",
+    },
+  ];
+
+  function shSwapTo(nextEl) {
+    if (!nextEl) return;
+    if (shCurrent && shCurrent !== nextEl) shCurrent.classList.add("is-hidden");
+    nextEl.classList.remove("is-hidden");
+    shCurrent = nextEl;
+  }
+
+  function shFadeTo(fromEl, toEl) {
+    if (!fromEl || !toEl) return;
+
+    fromEl.classList.add("is-fading-out");
+    setTimeout(() => {
+      fromEl.classList.add("is-hidden");
+      fromEl.classList.remove("is-fading-out");
+
+      toEl.classList.remove("is-hidden");
+      toEl.style.opacity = "0";
+      requestAnimationFrame(() => (toEl.style.opacity = "1"));
+
+      shCurrent = toEl;
+    }, 800);
+  }
+
+  function renderPrompt() {
+    const q = questions[qIndex];
+    shQTop.textContent = q.top;
+    shQText.textContent = q.text;
+  }
+
+  function renderAnswer() {
+    const q = questions[qIndex];
+    shQTop2.textContent = q.top;
+    shQText2.textContent = q.text;
+
+    shOptions.innerHTML = "";
+    q.options.forEach((label, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "sh-optionBtn";
+      btn.textContent = label;
+
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        if (idx === q.correctIndex) {
+          // correct
+          shCorrectSub.textContent = q.correctFeedback;
+          shSwapTo(shCorrect);
+
+          setTimeout(() => {
+            qIndex++;
+
+            if (qIndex >= questions.length) {
+              shStartRecap();
+            } else {
+              // next question prompt
+              renderPrompt();
+              shSwapTo(shPrompt);
+              shArmPromptAutoAdvance();
+            }
+          }, 1700);
+        } else {
+          // wrong
+          shSwapTo(shWrong);
+          setTimeout(() => shSwapTo(shAnswer), 1600);
+        }
+      });
+
+      shOptions.appendChild(btn);
+    });
+  }
+
+  function shArmPromptAutoAdvance() {
+    if (promptTimer) clearTimeout(promptTimer);
+
+    // auto-advance after a few seconds
+    promptTimer = setTimeout(() => {
+      renderAnswer();
+      shSwapTo(shAnswer);
+    }, 4000);
+  }
+
+  function shGoToAnswerNow() {
+    if (promptTimer) clearTimeout(promptTimer);
+    renderAnswer();
+    shSwapTo(shAnswer);
+  }
+
+  function shStartRecap() {
+  const order = [shRecap0, shRecap1, shRecap2, shRecap3, shRecap4, shRecap5, shRecap6, shRecap7].filter(Boolean);
+  if (order.length === 0) return;
+
+  // recap0 starts full colour (overlay off)
+  order.forEach(el => el.classList.remove("is-clear"));
+  order[0].classList.add("is-clear");
+
+  let i = 0;
+  const timings = [1500, 2200, 1600, 1600, 1700, 1700, 1700, 2200];
+
+  // show recap0
+  shSwapTo(order[i]);
+
+  // after 1.2s, fade overlay in on recap0
+  setTimeout(() => {
+    order[0].classList.remove("is-clear");
+  }, 1200);
+
+  function next() {
+    i++;
+
+    if (i >= order.length) {
+      shSwapTo(shRecapLoading);
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 3000);
+
+      return;
+    }
+
+    shSwapTo(order[i]);
+    setTimeout(next, timings[i] || 1700);
+  }
+
+  setTimeout(next, timings[0] || 1500);
+}
+
+  // Screen A to B
+  shCurrent = shIsland;
+  shSwapTo(shIsland);
+
+  setTimeout(() => {
+    shFadeTo(shIsland, shLevel);
+
+    // B -> Prompt Q1
+    setTimeout(() => {
+      qIndex = 0;
+      renderPrompt();
+      shFadeTo(shLevel, shPrompt);
+      shArmPromptAutoAdvance();
+    }, 4500);
+
+  }, 4500);
+
+  // Skip button
+  shSkipBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    shGoToAnswerNow();
+  });
+}
+
   // HOMEPAGE
 
   const splash = document.getElementById("splash");
@@ -282,9 +498,9 @@ if (bbIsland && bbLevel) {
         homepage.classList.add("phase-5");
       }, 13500);
 
-      // After loader2 plays a bit then go to Basics Bay page
+      // After loader2 plays a bit then go to Safe Harbour page
       setTimeout(() => {
-        window.location.href = "basicsbay.html";
+        window.location.href = "safeharbour.html";
       }, 16500);
 
     }, 17000);

@@ -12,4 +12,229 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     </head>
 
-    <body class="">
+    <body class="sh-body">
+    <!-- Screen A: Island intro -->
+    <section class="sh-screen sh-screen--island" id="shIslandScreen">
+      <div class="sh-center">
+        <h1 class="sh-h1">Safe Harbour</h1>
+        <p class="sh-sub">Internet safety</p>
+
+        <div class="sh-modelWrap">
+          <model-viewer
+            src="3DAssets/safeharbour_island.glb"
+            autoplay
+            camera-controls
+            disable-zoom
+            interaction-prompt="none"
+            environment-image="neutral"
+            shadow-intensity="0.7"
+          ></model-viewer>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen B: Level intro -->
+    <section class="sh-screen sh-screen--level is-hidden" id="shLevelScreen">
+      <div class="sh-center">
+        <h2 class="sh-h2">Level 1<br/><span class="sh-h2span">Spot the Safe Choice</span></h2>
+
+        <img class="sh-mascot" src="images/mascot.png" alt="Mascot" />
+
+        <p class="sh-desc">
+            Choose the safest option
+        </p>
+      </div>
+    </section>
+
+    <!-- Screen C: Prompt (Question intro + Skip) -->
+    <section class="sh-screen sh-screen--prompt is-hidden" id="shPromptScreen">
+    <div class="sh-promptWrap">
+        <p class="sh-qTop" id="shQTop">Question 1 / 5</p>
+
+        <p class="sh-qText" id="shQText">
+        You use the same password for email, social media and other websites.
+        What could happen if one website got hacked?
+        </p>
+
+        <button class="sh-skipBtn" id="shSkipBtn" type="button">Skip</button>
+    </div>
+    </section>
+
+    <!-- Screen D: Answer (Options) -->
+    <section class="sh-screen sh-screen--quiz is-hidden" id="shAnswerScreen">
+    <div class="sh-ansWrap">
+        <p class="sh-qTop" id="shQTop2">Question 1 / 5</p>
+
+        <p class="sh-qText sh-qText--big" id="shQText2">
+        You use the same password for email, social media and other websites.
+        What could happen if one website got hacked?
+        </p>
+
+        <div class="sh-options" id="shOptions"></div>
+    </div>
+    </section>
+
+    <!-- Screen E: Correct -->
+    <section class="sh-screen sh-screen--result is-hidden" id="shCorrectScreen">
+    <div class="sh-resultWrap">
+        <dotlottie-wc
+            src="https://lottie.host/ed359e53-1d32-4f00-a567-7aea87533a7e/lfBTIqCguu.lottie"
+            style="width: min(520px, 90vw); height: auto; max-height: 70vh; display:block;"
+            autoplay
+            loop
+            ></dotlottie-wc>
+        <h2 class="sh-resultTitle">Well Done!</h2>
+        <p class="sh-resultSub" id="shCorrectSub">
+        If one account is hacked, the same password can be used to access your other accounts
+        </p>
+    </div>
+    </section>
+
+    <!-- Screen F: Wrong -->
+    <section class="sh-screen sh-screen--result is-hidden" id="shWrongScreen">
+    <div class="sh-resultWrap">
+        <div class="bb-resultWrap">
+            <dotlottie-wc
+            src="https://lottie.host/8da73d44-d59e-4456-9da6-8e62b36fca49/1wv1xUpDqd.lottie"
+            style="width: min(520px, 90vw); height: auto; max-height: 70vh; display:block;"
+            autoplay
+            loop
+            ></dotlottie-wc>
+        <h2 class="sh-resultTitle">Try Again!</h2>
+        <p class="sh-resultSub">Try again, think “safe first”.</p>
+    </div>
+    </section>
+
+    <!-- Recap -->
+
+    <!-- Recap 0: flash island image full colour -->
+    <section class="sh-screen sh-recap is-hidden is-clear" id="shRecap0">
+        <img class="sh-recapBg" src="images/SafeHarbour.png" alt="SafeHarbour">
+        <div class="sh-recapSoftOverlay"></div>
+    </section>
+
+    <!-- Recap 1: Congrats -->
+    <section class="sh-screen sh-recap is-hidden" id="shRecap1">
+    <img class="sh-recapBg" src="images/SafeHarbour.png" alt="SafeHarbour">
+    <div class="sh-recapSoftOverlay"></div>
+
+    <div class="sh-recapText">
+        <p class="sh-recapBig">Congratulations on<br>completing</p>
+        <h2 class="sh-recapTitle">Safe Harbour</h2>
+        <p class="sh-recapSmall">You're Internet Alert!</p>
+    </div>
+    </section>
+
+    <!-- Recap 2: header -->
+    <section class="sh-screen sh-recap is-hidden" id="shRecap2">
+    <img class="sh-recapBg" src="images/SafeHarbour.png" alt="SafeHarbour">
+    <div class="sh-recapSoftOverlay"></div>
+
+    <div class="sh-recapText">
+        <h2 class="sh-recapTitle">Safe Harbour</h2>
+        <p class="sh-recapBig">You've learnt how to:</p>
+    </div>
+    </section>
+
+    <!-- Recap 3 -->
+    <section class="sh-screen sh-recap is-hidden" id="shRecap3">
+    <img class="sh-recapBg" src="images/SafeHarbour.png" alt="SafeHarbour">
+    <div class="sh-recapSoftOverlay"></div>
+
+    <div class="sh-recapText">
+        <h2 class="sh-recapTitle">Safe Harbour</h2>
+        <p class="sh-recapBig">You've learnt how to:</p>
+        <ul class="sh-checkList">
+        <li>Spot suspicious messages</li>
+        </ul>
+    </div>
+    </section>
+
+    <!-- Recap 4 -->
+    <section class="sh-screen sh-recap is-hidden" id="shRecap4">
+    <img class="sh-recapBg" src="images/SafeHarbour.png" alt="SafeHarbour">
+    <div class="sh-recapSoftOverlay"></div>
+
+    <div class="sh-recapText">
+        <h2 class="sh-recapTitle">Safe Harbour</h2>
+        <p class="sh-recapBig">You've learnt how to:</p>
+        <ul class="sh-checkList">
+        <li>Spot suspicious messages</li>
+        <li>Keep your passwords safe</li>
+        </ul>
+    </div>
+    </section>
+
+    <!-- Recap 5 -->
+    <section class="sh-screen sh-recap is-hidden" id="shRecap5">
+    <img class="sh-recapBg" src="images/SafeHarbour.png" alt="SafeHarbour">
+    <div class="sh-recapSoftOverlay"></div>
+
+    <div class="sh-recapText">
+        <h2 class="sh-recapTitle">Safe Harbour</h2>
+        <p class="sh-recapBig">You've learnt how to:</p>
+        <ul class="sh-checkList">
+        <li>Spot suspicious messages</li>
+        <li>Keep your passwords safe</li>
+        <li>Understand why online safety matters</li>
+        </ul>
+    </div>
+    </section>
+
+    <!-- Recap 6 -->
+    <section class="sh-screen sh-recap is-hidden" id="shRecap6">
+    <img class="sh-recapBg" src="images/SafeHarbour.png" alt="SafeHarbour">
+    <div class="sh-recapSoftOverlay"></div>
+
+    <div class="sh-recapText">
+        <h2 class="sh-recapTitle">Safe Harbour</h2>
+        <p class="sh-recapBig">You've learnt how to:</p>
+        <ul class="sh-checkList">
+        <li>Spot suspicious messages</li>
+        <li>Keep your passwords safe</li>
+        <li>Understand why online safety matters</li>
+        <li>Protect your device from risks</li>
+        </ul>
+    </div>
+    </section>
+
+    <!-- Recap 7 -->
+    <section class="sh-screen sh-recap is-hidden" id="shRecap7">
+    <img class="sh-recapBg" src="images/SafeHarbour.png" alt="SafeHarbour">
+    <div class="sh-recapSoftOverlay"></div>
+
+    <div class="sh-recapText">
+        <h2 class="sh-recapTitle">Safe Harbour</h2>
+        <p class="sh-recapBig">You've learnt how to:</p>
+        <ul class="sh-checkList">
+        <li>Spot suspicious messages</li>
+        <li>Keep your passwords safe</li>
+        <li>Understand why online safety matters</li>
+        <li>Protect your device from risks</li>
+        <li>Make safer decisions online</li>
+        </ul>
+    </div>
+    </section>
+
+    <!-- Congratulatory msg -->
+    <section class="sh-screen is-hidden" id="shRecapLoading">
+    <dotlottie-wc
+        src="https://lottie.host/f3b41a6e-c756-4e69-992c-96dcf96687a4/TQPKPbnZbh.lottie"
+        class="cloud"
+        autoplay
+        loop
+    ></dotlottie-wc>
+
+    <dotlottie-wc
+        src="https://lottie.host/0c5398a3-e6b9-4985-b326-8477d511a8fb/pHoyQSyo00.lottie"
+        class="loader"
+        autoplay
+        loop
+    ></dotlottie-wc>
+    </section>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
