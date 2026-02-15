@@ -112,7 +112,7 @@ if (bbIsland && bbLevel) {
     setTimeout(next, timings[0] || 1500);
   }
 
-  // ===== Start state =====
+  // Start state 
   bbCurrent = bbIsland;
   bbSwapTo(bbIsland);
 
