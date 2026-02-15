@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SilverIsle</title>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="images/IconLogo.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="rw-body">
+        <!-- Screen 1: Congratulation msg -->
+        <section class="rw-screen rw-screen--blank is-hidden" id="rwCongratsScreen">
+        <dotlottie-wc
+            src="https://lottie.host/f3b41a6e-c756-4e69-992c-96dcf96687a4/TQPKPbnZbh.lottie"
+            class="cloud"
+            autoplay
+            loop
+        ></dotlottie-wc>
+
+        <h1 class="rw-bigText rw-fadeIn" id="rwCongratsText">Congratulations on completing SilverIsle</h1>
+        </section>
+
+        <!-- Screen 2: Chest -->
+        <section class="rw-screen rw-screen--chest is-hidden" id="rwChestScreen">
+        <button class="rw-chestBtn" id="rwChestBtn" type="button" aria-label="Open treasure">
+            <dotlottie-wc
+            src="https://lottie.host/b9ec48f3-391e-432c-a689-9bc9ca03318f/bTq1Be2VL9.lottie"
+            class="rw-chestLottie"
+            autoplay
+            loop
+            ></dotlottie-wc>
+        </button>
+
+        <p class="rw-chestText">Click to open your treasure</p>
+        </section>
+
+        <!-- Screen 3: Certificate -->
+        <section class="rw-screen rw-screen--cert is-hidden" id="rwCertScreen">
+
+        <div class="rw-certWrap">   <!-- ADD THIS WRAPPER -->
+
+            <div class="rw-certCard" role="group" aria-label="Certificate">
+            <div class="rw-certInner">
+
+                <img class="rw-certLogo" src="images/WordMarkLogo.png" alt="SilverIsle" />
+
+                <p class="rw-certLine">This certificate is<br />awarded to</p>
+
+                <div class="rw-nameWrap">
+                <input
+                    id="rwNameInput"
+                    class="rw-nameInput"
+                    type="text"
+                    placeholder="Type your name"
+                    aria-label="Type your name"
+                    maxlength="28"
+                />
+                <div class="rw-nameLine"></div>
+                </div>
+
+                <p class="rw-certBody">
+                You have built essential<br />
+                digital skills and have<br />
+                proven to be Internet Ready!
+                </p>
+            </div>
+            </div>
+
+            <!-- download link -->
+            <a class="rw-download" id="rwDownloadLink" href="#">
+            Click here to download
+            </a>
+
+            <!-- Toast popup -->
+            <div class="rw-toast is-hidden" id="rwToast">
+            Downloaded! It has been sent to your email.
+            </div>
+
+        </div>
+
+        </section>
+
+        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -98,7 +98,7 @@ if (bbIsland && bbLevel) {
         bbSwapTo(bbRecapLoading);
 
         setTimeout(() => {
-          window.location.href = "index.html";
+          window.location.href = "safeharbour.html";
         }, 3000);
 
         return;
@@ -355,8 +355,8 @@ if (shIsland && shLevel && shPrompt && shAnswer) {
       shSwapTo(shRecapLoading);
 
       setTimeout(() => {
-        window.location.href = "index.html";
-      }, 3000);
+        window.location.href = "reward.html";
+      }, 2500);
 
       return;
     }
@@ -498,10 +498,64 @@ if (shIsland && shLevel && shPrompt && shAnswer) {
         homepage.classList.add("phase-5");
       }, 13500);
 
-      // After loader2 plays a bit then go to Safe Harbour page
+      // After loader2 plays a bit then go to BasicsBay page
       setTimeout(() => {
-        window.location.href = "safeharbour.html";
+        window.location.href = "basicsbay.html";
       }, 16500);
 
     }, 17000);
   }
+
+// --- REWARD page, runs only on reward.html ---
+const rwCongratsScreen = document.getElementById("rwCongratsScreen");
+const rwChestScreen   = document.getElementById("rwChestScreen");
+const rwCertScreen    = document.getElementById("rwCertScreen");
+
+const rwChestBtn      = document.getElementById("rwChestBtn");
+const rwNameInput     = document.getElementById("rwNameInput");
+const rwCongratsText = document.getElementById("rwCongratsText");
+
+const rwDownloadLink = document.getElementById("rwDownloadLink");
+const rwToast = document.getElementById("rwToast");
+
+if (rwCongratsScreen && rwChestScreen && rwCertScreen) {
+
+  function showOnly(el) {
+    [rwCongratsScreen, rwChestScreen, rwCertScreen]
+      .forEach(s => s.classList.add("is-hidden"));
+    el.classList.remove("is-hidden");
+  }
+
+  // 1) Start at Congrats screen immediately
+  showOnly(rwCongratsScreen);
+  replayFade()
+
+  // 2) After a few seconds -> chest screen
+  setTimeout(() => {
+    showOnly(rwChestScreen);
+  }, 3500);
+
+  // 3) Click chest -> certificate
+  rwChestBtn?.addEventListener("click", () => {
+    showOnly(rwCertScreen);
+    setTimeout(() => rwNameInput?.focus(), 200);
+  });
+
+  function replayFade() {
+  if (!rwCongratsText) return;
+  rwCongratsText.classList.remove("rw-fadeIn");
+  void rwCongratsText.offsetWidth; // reflow to restart animation
+  rwCongratsText.classList.add("rw-fadeIn");}
+
+  rwDownloadLink?.addEventListener("click", (e) => {
+  e.preventDefault(); // stop page jump
+
+  if (!rwToast) return;
+
+  rwToast.classList.remove("is-hidden");
+
+  setTimeout(() => {
+    rwToast.classList.add("is-hidden");
+  }, 2000);
+});
+}
